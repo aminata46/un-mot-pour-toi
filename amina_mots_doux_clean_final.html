@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Lettre à toi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fefcf7;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      font-family: 'Patrick Hand', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 120px 20px 60px;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: #4b3b2c;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 30px;
+      color: #7a4e37;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 50px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: 1px solid #c4a484;
+      border-radius: 10px;
+      background-color: #f3e8dc;
+      color: #4b3b2c;
+      font-size: 1.05rem;
+      font-family: 'Patrick Hand', cursive;
+      cursor: pointer;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e6d4c5;
+      transform: scale(1.03);
+    }
+
+    .message-box {
+      background-color: #fefaf5;
+      padding: 35px 25px;
+      border: 1px solid #e0c9b6;
+      border-radius: 12px;
+      max-width: 520px;
+      font-size: 1.35rem;
+      line-height: 1.8;
+      display: none;
+      animation: fadeIn 1s ease-in-out forwards;
+      font-family: 'Patrick Hand', cursive;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+      margin-top: 80px;
+    }
+
+    .signature {
+      font-size: 1.05rem;
+      color: #a67b5b;
+      margin-top: 15px;
+      font-family: 'Patrick Hand', cursive;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="mainTitle">Une lettre pour ton cœur 💌</h1>
+
+  <div class="button-container" id="buttonContainer">
+    <button onclick="showMessage('love')">Un mot d'amour</button>
+    <button onclick="showMessage('boost')">Un mot d'encouragement</button>
+    <button onclick="showMessage('comfort')">Un mot de réconfort</button>
+  </div>
+
+  <div class="message-box" id="messageBox"></div>
+
+  <div class="signature" id="signature">Avec tendresse, ton amoureuse 💌</div>
+
+  <script>
+    const messages = {
+      love: [
+        "Je t’aime doucement, comme on tourne une page précieuse.",
+        "Tu es mon refuge tendre dans le brouhaha du monde.",
+        "Merci d’exister. Ton sourire est une lumière dans mes jours.",
+        "Chaque pensée pour toi est un battement de plus dans mon cœur."
+      ],
+      boost: [
+        "Tu as en toi la force de mille soleils.",
+        "Même quand tu doutes, je crois en toi.",
+        "Chaque pas que tu fais, même petit, construit ton chemin.",
+        "N’oublie jamais combien tu es capable. Moi, je le vois clair."
+      ],
+      comfort: [
+        "Laisse-toi aller à la douceur, je suis là.",
+        "Quand le monde semble lourd, pense à moi comme un oreiller tendre.",
+        "Tu peux tout poser ici. Il y a de la place dans mes bras.",
+        "Tout passe. Mais moi, je reste à tes côtés."
+      ]
+    };
+
+    function showMessage(category) {
+      const categoryMessages = messages[category];
+      const randomMsg = categoryMessages[Math.floor(Math.random() * categoryMessages.length)];
+      const messageBox = document.getElementById("messageBox");
+      messageBox.innerText = randomMsg;
+      messageBox.style.display = "block";
+      document.getElementById("signature").style.display = "block";
+      document.getElementById("buttonContainer").style.display = "none";
+      document.getElementById("mainTitle").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
